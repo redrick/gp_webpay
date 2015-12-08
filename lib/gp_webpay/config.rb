@@ -30,14 +30,14 @@ module GpWebpay
 
     def pay_url
       if production?
-        'https://3dsecure.gpwebpay.com/kb/order.do'
+        'https://platebnibrana.csob.cz/pay/entry/merchant'
       else
-        'https://test.3dsecure.gpwebpay.com/kb/order.do'
+        'https://iplatebnibrana.csob.cz/pay/entry/merchant'
       end
     end
 
     def gpe_pem_path
-      file_name = production? ? 'muzo.signing_prod.pem' : 'muzo.signing_test.pem'
+      file_name = production? ? 'mips_prod.csob.cz.pem' : 'mips_test.csob.cz.pem'
 
       File.expand_path("../../../certs/#{file_name}", __FILE__)
     end
