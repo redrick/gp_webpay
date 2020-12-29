@@ -114,7 +114,7 @@ module GpWebpay
       # </soapenv:Envelope>
       ##
       def process_regular_subscription_payment(attributes = {})
-        xml = ::Nokogiri::XML::Builder.new(:encoding => "utf-8") do |xml|
+        ::Nokogiri::XML::Builder.new(:encoding => "utf-8") do |xml|
           xml.send("soapenv:Envelope", "xmlns:soapenv" => "http://schemas.xmlsoap.org/soap/envelope/", "xmlns:core" => "http://gpe.cz/pay/pay-ws/core", "xmlns:type" => "http://gpe.cz/pay/pay-ws/core/type") {
             xml.send("soapenv:Header")
             xml.send("soapenv:Body") {
@@ -125,7 +125,7 @@ module GpWebpay
                   xml.send("type:merchantNumber", attributes[:merchant_number])
                   xml.send("type:paymentNumber", attributes[:order_number])
                   xml.send("type:masterPaymentNumber", attributes[:master_order_number])
-                  xml.send("type:orderNumber", attributes[:order_number])
+                  xml.send("type:orderNumber", attributes[:merchant_order_number])
                   xml.send("type:subscriptionAmount", attributes[:amount])
                   xml.send("type:cardHolderData") {
                     xml.send("type:cardholderDetails") {
